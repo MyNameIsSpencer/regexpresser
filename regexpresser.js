@@ -1,5 +1,5 @@
 
-var quoter = "Either we live for now and today \neither we retreat and either we live the morrow"
+var quoter = "Either we live for now and today 12\n either we retreat 233 and either we live the morrow 100"
 var counter = 0;
 
 function regExMatcher(inputter, pattern) {
@@ -48,12 +48,12 @@ console.log(antiVowelerString);
 console.log(`\n\n=============${counter +=1}=============`);
 console.log('Ranges\n');
 
-var numberer = 823478234823444386763;
+var numberer = '823478234823444386763';
 const numbRanger = /[0-5]/ig;
-const wordRanger = /[c-g]/ig;
-// var numbRangerFilter = regExMatcher(quoter, numbRanger);
+const wordRanger = /[p-v]/ig;
+var numbRangerFilter = regExMatcher(numberer, numbRanger);
 var wordRangerFilter = regExMatcher(quoter, wordRanger);
-// console.log(numbRangerFilter);
+console.log(numbRangerFilter);
 console.log(wordRangerFilter);
 
 
@@ -87,5 +87,14 @@ console.log(antiWorderString);
 
 
 // 9
+// NOTE: \letter vs \LETTER the capitalized version is the antithesis of lowercase version
 console.log(`\n\n=============${counter +=1}=============`);
-console.log('d digit, s whitespace, b beginning/end,  \n');
+console.log('d digit, s whitespace, b beginning/end  \n');
+
+const ninerStr = 'In 200 years, the Yettis fled the depth there fifth. \n 320% they gave of past degradations did not satisfy the mirth';
+const digiter = /\d/ig;
+const whitespacer =/\s/ig;
+const bber = /\B th/ig;
+console.log(ninerStr.match(digiter));
+console.log(whitespacer.test(ninerStr));
+console.log(ninerStr.match(bber));
