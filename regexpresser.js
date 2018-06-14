@@ -5,12 +5,23 @@ var counter = 0;
 function regExMatcher(inputter, pattern) {
   let newStr = '';
   inputter.match(pattern).map((ellen) => {
-    newStr += ellen;
+    newStr += `${ellen} `;
+  });
+  return newStr;
+}
+
+function regExWord(inputter, pattern) {
+  let newStr = '';
+  inputter.split(' ').map((ellen) => {
+    if (pattern.test(ellen)) {
+      newStr += `${ellen} `;
+    }
   });
   return newStr;
 }
 
 // 1
+console.log(`\n============= Meta Characters =============`);
 console.log(`\n=============${counter +=1}=============`);
 console.log('Insensitive g\n');
 
@@ -50,9 +61,9 @@ console.log('Ranges\n');
 
 var numberer = '823478234823444386763';
 const numbRanger = /[0-5]/ig;
-const wordRanger = /[p-v]/ig;
+const wordRanger = /[q-v]/ig;
 var numbRangerFilter = regExMatcher(numberer, numbRanger);
-var wordRangerFilter = regExMatcher(quoter, wordRanger);
+var wordRangerFilter = regExWord(quoter, wordRanger);
 console.log(numbRangerFilter);
 console.log(wordRangerFilter);
 
@@ -80,8 +91,8 @@ console.log('Imma word   \w or not? \W \n');
 
 const worder = /\w/g;
 const antiWorder = /\W/g;
-let worderString = regExMatcher(quoter, worder);
-let antiWorderString = regExMatcher(quoter, antiWorder);
+let worderString = regExWord(quoter, worder);   //regExMatcher(quoter, worder);
+let antiWorderString = regExWord(quoter, antiWorder);
 console.log(worderString);
 console.log(antiWorderString);
 
@@ -91,10 +102,28 @@ console.log(antiWorderString);
 console.log(`\n\n=============${counter +=1}=============`);
 console.log('d digit, s whitespace, b beginning/end  \n');
 
-const ninerStr = 'In 200 years, the Yettis fled the depth there fifth. \n 320% they gave of past degradations did not satisfy the mirth';
+const ninerStr = 'In 200 years, the Yettis fled the depth there fifth pit. \n 320% they gave heeeel did not satisfy the mirth';
 const digiter = /\d/ig;
 const whitespacer =/\s/ig;
-const bber = /\B th/ig;
+const bber = /\bth/ig;
 console.log(ninerStr.match(digiter));
-console.log(whitespacer.test(ninerStr));
-console.log(ninerStr.match(bber));
+console.log(whitespacer.exec(ninerStr));
+console.log(regExWord(ninerStr, bber));
+
+
+// 10
+console.log(`\n\n============= Quantifiers =============`);
+console.log(`\n\n=============${counter +=1}=============`);
+console.log(' n+, n*, n? \n');
+
+const pluser = /i+/ig;
+const starer = /th*/ig;
+const whaaer = /he?/ig;
+console.log(regExWord(ninerStr, pluser));
+console.log(regExWord(ninerStr, starer));
+console.log(ninerStr.match(whaaer));
+
+
+
+console.log(' ');
+console.log(' ');
