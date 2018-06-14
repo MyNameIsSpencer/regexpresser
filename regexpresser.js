@@ -20,6 +20,10 @@ function regExWord(inputter, pattern) {
   return newStr;
 }
 
+
+console.log('^x can mean at the start OR anti-x when in [^x], x$ can mean at the end ');
+console.log(' backslash* indicates that * is not a special character');
+
 // 1
 console.log(`\n============= Meta Characters =============`);
 console.log(`\n=============${counter +=1}=============`);
@@ -102,18 +106,18 @@ console.log(antiWorderString);
 console.log(`\n\n=============${counter +=1}=============`);
 console.log('d digit, s whitespace, b beginning/end  \n');
 
-const ninerStr = 'In 200 years, the Yettis fled the depth there fifth pit. \n 320% they gave heeeel did not satisfy the mirth';
+const ninerStr = '123456 In 200 years, the Yettis fled the depth there fifth or 5th  pit 9000. \n 320% they gave heeeel did not satisfy the mirth, 42,000 years ago.';
 const digiter = /\d/ig;
 const whitespacer =/\s/ig;
 const bber = /\bth/ig;
-console.log(ninerStr.match(digiter));
+console.log(regExMatcher(ninerStr, digiter));
 console.log(whitespacer.exec(ninerStr));
 console.log(regExWord(ninerStr, bber));
 
 
 // 10
 console.log(`\n\n============= Quantifiers =============`);
-console.log(`\n\n=============${counter +=1}=============`);
+console.log(`\n=============${counter +=1}=============`);
 console.log(' n+, n*, n? \n');
 
 const pluser = /i+/ig;
@@ -124,6 +128,31 @@ console.log(regExWord(ninerStr, starer));
 console.log(ninerStr.match(whaaer));
 
 
+// 11
+console.log(`\n\n=============${counter +=1}=============`);
+console.log('Sequencer matching with { } \n');
+
+// a11 SUPPOSE to find substrings with 3 digits only, but finds 3 or more
+const a11 = /\d{3}/g;
+console.log(regExWord(ninerStr, a11));
+
+
+// 12
+console.log(`\n\n=============${counter +=1}=============`);
+console.log('Lookahead with ?=n  OR  ?!n \n');
+
+const questionEqual = /\s*(?=i)/ig;
+const notEqual = /t(?!i)/ig;
+console.log(regExWord(ninerStr, questionEqual));
+console.log(regExWord(ninerStr, notEqual));
+
+
+// 13
+console.log(`\n\n=============${counter +=1}=============`);
+console.log('replacing superfluous\n');
+const thirteenStr = 'Here ##they.. are{{}}]] ++today, ^^^the ??last ()()()((())of the Golden$$$ vampires.'
+const cleanser = /[.*+^?${}()|[\]/\\#]/g;
+console.log(thirteenStr.replace(cleanser, ''));
 
 console.log(' ');
 console.log(' ');
